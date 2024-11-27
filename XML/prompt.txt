@@ -28,3 +28,12 @@
 - ソースコードは常に完全なコードを生成して下さい。ソースコード更新において一部分だけを生成するのは禁止です。
 - 生成したソースコードは必ずパス・ファイル名を書いてください。
 """
+
+
+{
+    "messages": [
+        {"role": "user", "content": user_prompt},
+        {"role": "user", "content": "Hello, world"},
+        {"role": "user", "content": "Hello, world"}
+    ]
+}
