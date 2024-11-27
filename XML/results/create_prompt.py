@@ -325,77 +325,18 @@ if __name__ == '__main__':
             trim_blocks=True,
             lstrip_blocks=True
         )
-    
-    def parse_xml_template(self, xml_file: Union[str, Path]) -> Dict[str, Any]:
+
+
+        
         """
-        XMLテンプレートファイルをパースし、テンプレート情報を抽出
-        
-        Args:
-            xml_file (Union[str, Path]): パースするXMLファイルのパス
-        
-        Returns:
-            Dict[str, Any]: テンプレート情報
-        
         Raises:
             FileNotFoundError: XMLファイルが見つからない場合
             ET.ParseError: XMLのパースに失敗した場合
         """
-        try:
-            xml_path = Path(xml_file)
-            if not xml_path.exists():
-                raise FileNotFoundError(f"テンプレートファイルが見つかりません: {xml_path}")
-            
-            tree = ET.parse(xml_path)
-            root = tree.getroot()
-            
-            template_info: Dict[str, Any] = {
-                'name': root.get('name', 'unnamed_template'),
-                'description': root.findtext('description', ''),
-                'sections': []
-            }
-            
-            # セクションの抽出
-            for section in root.findall('section'):
-                section_info: Dict[str, Any] = {
-                    'type': section.get('type', ''),
-                    'content': section.text.strip() if section.text else ''
-                }
-                
-                section_type = section.get('type')
-                if section_type in ['rules', 'requirements', 'languages', 'libraries']:
-                    section_info[section_type] = [
-                        item.text.strip() for item in section.findall(section_type[:-1])
-                    ]
-                
-                template_info['sections'].append(section_info)
-            
-            return template_info
-        
-        except ET.ParseError as e:
-            self.logger.error(f"XMLのパースエラー: {e}")
-            raise
-    
-    def render_template(self, template_name: str, context: Optional[Dict[str, Any]] = None) -> str:
         """
-        テンプレートをレンダリングし、プロンプトを生成
-        
-        Args:
-            template_name (str): レンダリングするテンプレート名
-            context (Optional[Dict[str, Any]], optional): テンプレートに渡すコンテキスト変数
-        
-        Returns:
-            str: レンダリングされたプロンプト
-        
         Raises:
             TemplateError: テンプレートのレンダリングに失敗した場合
         """
-        try:
-            context = context or {}
-            template = self.env.get_template(template_name)
-            return template.render(context)
-        except TemplateError as e:
-            self.logger.error(f"テンプレートレンダリングエラー: {e}")
-            raise
     
     def save_prompt(self, prompt: str, prefix: str = 'prompt') -> Path:
         """
