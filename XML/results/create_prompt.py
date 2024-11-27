@@ -35,7 +35,43 @@ class PromptTemplateGenerator:
         
         self.template_dir = Path(template_dir)
         self.output_dir = Path(output_dir)
-
+    
+    def _validate_and_create_directories(self, template_dir: str, output_dir: str) -> None:
+        """
+        テンプレートとアウトプットディレクトリの検証と作成
+        
+        Args:
+            template_dir (str): テンプレートディレクトリ
+            output_dir (str): 出力ディレクトリ
+        
+        Raises:
+            PermissionError: ディレクトリ作成に必要な権限がない場合
+        """
+        try:
+            Path(template_dir).mkdir(parents=True, exist_ok=True)
+            Path(output_dir).mkdir(parents=True, exist_ok=True)
+        except PermissionError as e:
+            self.logger.error(f"ディレクトリ作成エラー: {e}")
+            raise
+    
+     def _setup_jinja2_environment(self, template_dir: str) -> Environment:
+        """
+        Jinja2環境の設定
+        
+        Args:
+            template_dir (str): テンプレートディレクトリ
+        
+        Returns:
+            Environment: 設定されたJinja2環境
+        """
+        return Environment(
+            loader=FileSystemLoader(template_dir),
+            autoescape=select_autoescape(['xml']),
+            extensions=['jinja2.ext.do'],
+            trim_blocks=True,
+            lstrip_blocks=True
+        )
+    
     def _extract_sub_items(self, element: ET.Element) -> List[Dict[str, Any]]:
         """
         要素からサブ項目を抽出する
@@ -140,9 +176,64 @@ class PromptTemplateGenerator:
         except TemplateError as e:
             self.logger.error(f"テンプレートレンダリングエラー: {e}")
             raise
+    
+    def save_prompt(self, prompt: str, prefix: str = 'prompt') -> Path:
+        """
+        生成されたプロンプトをテキストファイルに保存
+        
+        Args:
+            prompt (str): 保存するプロンプト
+            prefix (str, optional): ファイル名のプレフィックス
+        
+        Returns:
+            Path: 保存されたファイルのパス
+        
+        Raises:
+            IOError: ファイル保存に失敗した場合
+        """
+        try:
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            filename = f"{prefix}_{timestamp}.txt"
+            filepath = self.output_dir / filename
+            
+            with filepath.open('w', encoding='utf-8') as f:
+                f.write(prompt)
+            
+            self.logger.info(f"プロンプトを {filepath} に保存しました。")
+            return filepath
+        except IOError as e:
+            self.logger.error(f"ファイル保存エラー: {e}")
+            raise
 
-    # 他のメソッドは前回と同様のため省略
-
+    def generate_prompt_template(
+        self, 
+        template_name: str, 
+        context: Optional[Dict[str, Any]] = None
+    ) -> Path:
+        """
+        プロンプトテンプレートの生成と保存を一括で行う
+        
+        Args:
+            template_name (str): 使用するテンプレート名
+            context (Optional[Dict[str, Any]], optional): テンプレートコンテキスト
+        
+        Returns:
+            Path: 生成・保存されたプロンプトファイルのパス
+        """
+        try:
+            # テンプレート情報の取得
+            self.parse_xml_template(self.template_dir / template_name)
+            
+            # テンプレートのレンダリング
+            rendered_prompt = self.render_template(template_name, context)
+            
+            # プロンプトの保存
+            return self.save_prompt(rendered_prompt, prefix='claude_prompt')
+        
+        except Exception as e:
+            self.logger.error(f"プロンプトテンプレート生成エラー: {e}")
+            raise PromptTemplateGeneratorError(f"プロンプトテンプレートの生成に失敗しました: {e}")
+            
 def main():
     generator = PromptTemplateGenerator()
     
@@ -282,118 +373,6 @@ if __name__ == '__main__':
 
 
 
-
-
-
-
-
-
-
-
-    def _validate_and_create_directories(self, template_dir: str, output_dir: str) -> None:
-        """
-        テンプレートとアウトプットディレクトリの検証と作成
-        
-        Args:
-            template_dir (str): テンプレートディレクトリ
-            output_dir (str): 出力ディレクトリ
-        
-        Raises:
-            PermissionError: ディレクトリ作成に必要な権限がない場合
-        """
-        try:
-            Path(template_dir).mkdir(parents=True, exist_ok=True)
-            Path(output_dir).mkdir(parents=True, exist_ok=True)
-        except PermissionError as e:
-            self.logger.error(f"ディレクトリ作成エラー: {e}")
-            raise
-    
-    def _setup_jinja2_environment(self, template_dir: str) -> Environment:
-        """
-        Jinja2環境の設定
-        
-        Args:
-            template_dir (str): テンプレートディレクトリ
-        
-        Returns:
-            Environment: 設定されたJinja2環境
-        """
-        return Environment(
-            loader=FileSystemLoader(template_dir),
-            autoescape=select_autoescape(['xml']),
-            extensions=['jinja2.ext.do'],
-            trim_blocks=True,
-            lstrip_blocks=True
-        )
-
-
-        
-        """
-        Raises:
-            FileNotFoundError: XMLファイルが見つからない場合
-            ET.ParseError: XMLのパースに失敗した場合
-        """
-        """
-        Raises:
-            TemplateError: テンプレートのレンダリングに失敗した場合
-        """
-    
-    def save_prompt(self, prompt: str, prefix: str = 'prompt') -> Path:
-        """
-        生成されたプロンプトをテキストファイルに保存
-        
-        Args:
-            prompt (str): 保存するプロンプト
-            prefix (str, optional): ファイル名のプレフィックス
-        
-        Returns:
-            Path: 保存されたファイルのパス
-        
-        Raises:
-            IOError: ファイル保存に失敗した場合
-        """
-        try:
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = f"{prefix}_{timestamp}.txt"
-            filepath = self.output_dir / filename
-            
-            with filepath.open('w', encoding='utf-8') as f:
-                f.write(prompt)
-            
-            self.logger.info(f"プロンプトを {filepath} に保存しました。")
-            return filepath
-        except IOError as e:
-            self.logger.error(f"ファイル保存エラー: {e}")
-            raise
-    
-    def generate_prompt_template(
-        self, 
-        template_name: str, 
-        context: Optional[Dict[str, Any]] = None
-    ) -> Path:
-        """
-        プロンプトテンプレートの生成と保存を一括で行う
-        
-        Args:
-            template_name (str): 使用するテンプレート名
-            context (Optional[Dict[str, Any]], optional): テンプレートコンテキスト
-        
-        Returns:
-            Path: 生成・保存されたプロンプトファイルのパス
-        """
-        try:
-            # テンプレート情報の取得
-            self.parse_xml_template(self.template_dir / template_name)
-            
-            # テンプレートのレンダリング
-            rendered_prompt = self.render_template(template_name, context)
-            
-            # プロンプトの保存
-            return self.save_prompt(rendered_prompt, prefix='claude_prompt')
-        
-        except Exception as e:
-            self.logger.error(f"プロンプトテンプレート生成エラー: {e}")
-            raise PromptTemplateGeneratorError(f"プロンプトテンプレートの生成に失敗しました: {e}")
 
 def main():
     try:
