@@ -1,3 +1,26 @@
+<prompt name='{{ prompt_name }}'>
+    <description>{{ prompt_description }}</description>
+    <section type='system'>{{ system_prompt }}</section>
+    <section type='user'>
+        {{ user_prompt }}
+        <language>
+        </language>
+    </section>
+{% for sub_item in language.sub_items %}
+    {% if sub_item.type == 'description' %}
+    説明: {{ sub_item.text }}
+    {% elif sub_item.type == 'note' %}
+    補足: {{ sub_item.text }}
+    {% elif sub_item.type == 'example' %}
+    例: {{ sub_item.text }}
+    {% endif %}
+  {% endfor %}
+</prompt>
+
+{% if complexity == 'advanced' %}
+
+
+
 <system_prompt>
 以下の条件に基づいて、新製品のプレスリリースを作成してください。
 製品名は<product>タグで囲まれた値を使用する
