@@ -1,10 +1,29 @@
 <prompt name='{{ prompt_name }}'>
     <description>{{ prompt_description }}</description>
-    <section type='system'>{{ system_prompt }}</section>
+    <section type='system'>
+        {{ system_prompt }}
+    </section>
     <section type='user'>
+        {% if generate == 'code' %}
+        {% else %}
+        {% endif %}
+{% if user.role == 'admin' %}
+  <p>管理者としてログインしています。</p>
+{% elif user.role == 'user' %}
+  <p>ユーザーとしてログインしています。</p>
+{% else %}
+  <p>ゲストとしてアクセスしています。</p>
+{% endif %}
+
+
         {{ user_prompt }}
+        <requirement>
+        </requirement>
         <language>
         </language>
+        <library>
+        </library>
+        <rule></rule>
     </section>
 {% for sub_item in language.sub_items %}
     {% if sub_item.type == 'description' %}
