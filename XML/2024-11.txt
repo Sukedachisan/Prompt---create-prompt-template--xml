@@ -1,0 +1,15 @@
+<system_prompt>
+以下の条件に基づいて、新製品のプレスリリースを作成してください。
+製品名は<product>タグで囲まれた値を使用する
+発売日は<release_date>タグで囲まれた値を使用する
+製品の主な特徴は、<features>タグ内の<item>タグで囲まれた値を箇条書きで記載する
+プレスリリースの本文は、<body>タグで囲んで出力する
+</system_prompt>
+<product>スマートウォッチXYZ</product>
+<release_date>2023年9月1日</release_date>
+<features>
+<item>健康管理機能: 心拍数、血中酸素濃度、ストレスレベルのモニタリング</item>
+<item>フィットネス機能: 50種類以上のワークアウトモード、GPSによるルートトラッキング</item>
+<item>スマート通知: 通話、テキスト、SNSアプリの通知をディスプレイに表示</item>
+</features>
+<body> {{Claudeが生成するプレスリリース本文}} </body>
