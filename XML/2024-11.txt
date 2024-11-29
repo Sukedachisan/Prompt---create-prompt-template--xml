@@ -5,8 +5,20 @@
     </section>
     <section type='user'>
         {{ user_prompt }}
-        {% if generate == 'code' %}
+        {% if task_type == 'generate_code' %}
+        {% for requirement in requirements %}
+        <requirement>{{ requirement }}</requirement>
+        {% endfor %}
+
+
+
+
+
+
         {% else %}
+
+
+
         {% endif %}
 {% if user.role == 'admin' %}
   <p>管理者としてログインしています。</p>
