@@ -4,6 +4,7 @@
         {{ system_prompt }}
     </section>
     <section type='user'>
+        {{ user_prompt }}
         {% if generate == 'code' %}
         {% else %}
         {% endif %}
