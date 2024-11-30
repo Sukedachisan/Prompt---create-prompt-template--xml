@@ -1,7 +1,24 @@
-<prompt name='{{ prompt_name }}'>
+<system_prompt>
+    {{ system_prompt }}
+</system_prompt>
+
+<user_prompt>
+    {{ user_prompt }}
+    {% if task_type == 'generate_code' %}
+    {% for requirement in requirements %}
+    <requirement>{{ requirement }}</requirement>
+    {% endfor %}
+    {% else %}
+    
+    {% endif %}
+</user_prompt>
+
+
+
     <description>{{ prompt_description }}</description>
     <section type='system'>
         {{ system_prompt }}
+
     </section>
     <section type='user'>
         {{ user_prompt }}
