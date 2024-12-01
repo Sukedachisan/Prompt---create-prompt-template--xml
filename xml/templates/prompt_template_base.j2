@@ -11,7 +11,7 @@
     </purpose>
     {% endif %}
     <section type="instructions">
-        {% block system_prompt %}
+        {% block system_instructions %}
         <instruction>
             最低でも3回、推論を繰り返し、適切ではない部分があれば修正・変更を行い、最終的な回答をしてください。
         </instruction>
@@ -34,7 +34,7 @@
 {# user prompt #}
 <prompt type="user">
     <section type="instructions">
-        {% block user_prompt %}
+        {% block user_instructions %}
         {% endblock %}
     </section>
 </prompt>
