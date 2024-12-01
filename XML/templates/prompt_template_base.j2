@@ -1,5 +1,6 @@
+
 {# system prompt #}
-<system_prompt>
+<prompt type="system">
     {% block system_prompt %}
     <instruction>
         最低でも3回、推論を繰り返し、適切ではない部分があれば修正・変更を行い、最終的な回答をしてください。
@@ -17,7 +18,13 @@
         十分な推論ができない箇所がある場合、「※不確実性のある項目です。」と明確にし、該当する箇所を[]括弧で囲んでください。
     </instruction>
     {% endblock %}
-</system_prompt>
+</prompt>
+
+{# user prompt #}
+<prompt type="user">
+    {% block user_prompt %}
+    {% endblock %}
+</prompt>
 
 {# user prompt #}
 <user_prompt>
