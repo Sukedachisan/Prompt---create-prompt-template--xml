@@ -1,5 +1,8 @@
 {# system prompt #}
 <prompt type="system">
+    <role>
+        {{ role }}
+    </role>
     <section type="instructions">
         {% block system_prompt %}
         <instruction>
