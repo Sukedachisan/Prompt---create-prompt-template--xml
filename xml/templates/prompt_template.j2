@@ -1,6 +1,6 @@
 {% extends 'prompt_template_base.j2' %}
 
-{% block system_prompt %}
+{% block system_instructions %}
     {% if task_type == '製品・サービスの開発' or task_type == 'コードの生成' %}
     {% if task_type == '製品・サービスの開発' %}
     <instruction>
@@ -78,5 +78,5 @@
     {{ super() }}
 {% endblock %}
 
-{% block user_prompt %}
+{% block user_instructions %}
 {% endblock %}
