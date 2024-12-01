@@ -1,8 +1,8 @@
 {% extends 'prompt_template_base.j2' %}
 
 {% block system_prompt %}
-    {% if task_type == 'code_generation' %}
-    {% elif task_type == '' %}
+    {% if task_type == 'product_generation' %}
+    {% elif task_type == 'code_generation' %}
     {% else %}
     {% endif %}
     {% for system_instruction in instructions.system %}
