@@ -9,6 +9,7 @@
     {% for system_instruction in instructions.system %}
     <instruction>
         {{ system_instruction.text }}
+        {% if system_instruction.sub_instructions %}
         {% for sub_instruction in system_instruction.sub_instructions %}
         {% if sub_instruction.type == 'description' %}
         {% for sub_instruction_text in sub_instruction.texts %}
@@ -30,6 +31,7 @@
         {% endfor %}
         {% endif %}
         {% endfor %}
+        {% endif %}
     </instruction>
     {% endfor %}
     {% endif %}
