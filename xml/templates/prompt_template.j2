@@ -3,10 +3,31 @@
 {% block system_prompt %}
     {% if task_type == 'product_generation' %}
     <instruction>
+        補足項目に記載したものは必ず生成してください。
+        <note>
+            要件定義書
+        </note>
+        <note>
+            モデル定義
+        </note>
+        <note>
+            モデル間の関係図
+        </note>
+        <note>
+            システムフロー図
+        </note>
+        <note>
+            プロジェクトディレクトリ構造
+        </note>
+        <note>
+            ソースコード
+        </note>
     </instruction>
     {% elif task_type == 'code_generation' %}
     <instruction>
         ソースコードを必ず生成してください。
+        <description>
+        </description>
         <note>
             ソースコードは常に完全なコードを生成して下さい。
         </note>
