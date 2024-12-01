@@ -1,6 +1,7 @@
 {
     "template_name": "template",
     "task_type": "code_generation",
+    "role": ""
     "instructions": {
         "system": [
             {
