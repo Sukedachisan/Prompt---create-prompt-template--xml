@@ -1,5 +1,5 @@
 {
-    "template_name": "test",
+    "template_name": "template",
     "task_type": "code_generation",
     "instructions": {
         "system": [
