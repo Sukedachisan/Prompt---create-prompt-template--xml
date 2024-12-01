@@ -1,3 +1,3 @@
 {
-    'template_name': 'graphql_create_invoice__prompt'
+    "template_name": "graphql_create_invoice__prompt"
 }
