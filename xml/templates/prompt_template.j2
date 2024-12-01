@@ -1,6 +1,7 @@
 {% extends 'prompt_template_base.j2' %}
 
 {% block system_prompt %}
+    {% if task_type == '製品・サービスの開発' or task_type == 'コードの生成' %}
     {% if task_type == '製品・サービスの開発' %}
     <instruction>
         次の項目に記載したものは必ず生成してください。
@@ -19,23 +20,8 @@
         <item>
             プロジェクトディレクトリ構造
         </item>
-        <item>
-            ソースコード
-        </item>
-        <note>
-            ソースコードは常に完全なコードを生成して下さい。
-        </note>
-        <note>
-            ソースコード更新において一部分だけを生成するのは禁止です。
-        </note>
-        <note>
-            生成したソースコードは必ずパス・ファイル名を記載してください。
-        </note>
-        <note>
-            200行を越える大きなサイズのソースコードは、ファイルを分割してください。
-        </note>
     </instruction>
-    {% elif task_type == 'コードの生成' %}
+    {% endif %}
     <instruction>
         ソースコードを必ず生成してください。
         <note>
