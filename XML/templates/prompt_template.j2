@@ -1,1 +1,31 @@
 
+{% extends "prompt_template_base.j2" %}
+{% block system_prompt %}
+    {% if task_type == 'code_generation' %}
+    <instruction>
+        あなたは要件定義から高度で複雑な設計及び実装まで一貫して開発できる フルスタックエンジニア です。
+    </instruction>
+    {% else %}
+    {% endif %}
+    {% for system_instruction in instructions.system %}
+    <instruction>
+        {{ system_instruction.text }}
+        {% for sub_instruction in system_instruction.sub_instructions %}
+        {% if sub_instruction.type == 'description' %}
+        {% for sub_instruction_text in sub_instruction.texts %}
+        <description>{{ sub_instruction_text }}</description>
+        {% endfor %}
+        {% elif sub_instruction.type == 'note' %}
+        {% for sub_instruction_text in sub_instruction.texts %}
+        <note>{{ sub_instruction_text }}</note>
+        {% endfor %}
+        {% elif sub_instruction.type == 'example' %}
+        {% for sub_instruction_text in sub_instruction.texts %}
+        <example>{{ sub_instruction_text }}</example>
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+    </instruction>
+    {% endfor %}
+    {{ super() }}
+{% endblock %}
