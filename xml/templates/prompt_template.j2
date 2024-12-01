@@ -5,9 +5,6 @@
     {% elif task_type == '' %}
     {% else %}
     {% endif %}
-    <role>
-        {{ role }}
-    </role>
     {% for system_instruction in instructions.system %}
     <instruction>
         {{ system_instruction.text }}
