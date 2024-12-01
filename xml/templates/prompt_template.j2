@@ -5,6 +5,7 @@
     {% elif task_type == 'code_generation' %}
     {% else %}
     {% endif %}
+    {% if instructions.system %}
     {% for system_instruction in instructions.system %}
     <instruction>
         {{ system_instruction.text }}
@@ -31,6 +32,7 @@
         {% endfor %}
     </instruction>
     {% endfor %}
+    {% endif %}
     {{ super() }}
 {% endblock %}
 
