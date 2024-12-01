@@ -1,7 +1,7 @@
 {% extends 'prompt_template_base.j2' %}
 
 {% block system_prompt %}
-    {% if task_type == 'product_generation' %}
+    {% if task_type == '製品の開発' %}
     <instruction>
         補足項目に記載したものは必ず生成してください。
         <note>
