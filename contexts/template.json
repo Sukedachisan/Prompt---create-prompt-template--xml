@@ -1,3 +1,37 @@
 {
-    "template_name": "graphql_create_invoice__prompt"
+    "template_name": "test",
+    "task_type": "code_generation",
+    "instructions": {
+        "system": [
+            {
+                "text": "",
+                "sub_instructions": [
+                    {
+                        "type": "description",
+                        "texts": [
+                            "",
+                            ""
+                        ]
+                    },
+                    {
+                        "type": "note",
+                        "texts": [
+                            "",
+                            ""
+                        ]
+                    },
+                    {
+                        "type": "example",
+                        "texts": [
+                            "",
+                            ""
+                        ]
+                    }
+                ]
+            }
+        ],
+        "user": [
+            
+        ]
+    }
 }
