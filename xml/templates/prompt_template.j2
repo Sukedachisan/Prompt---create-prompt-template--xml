@@ -3,31 +3,41 @@
 {% block system_prompt %}
     {% if task_type == '製品・サービスの開発' %}
     <instruction>
-        補足項目に記載したものは必ず生成してください。
-        <note>
+        次の項目に記載したものは必ず生成してください。
+        <item>
             要件定義書
-        </note>
-        <note>
+        </item>
+        <item>
             モデル定義
-        </note>
-        <note>
+        </item>
+        <item>
             モデル間の関係図
-        </note>
-        <note>
+        </item>
+        <item>
             システムフロー図
-        </note>
-        <note>
+        </item>
+        <item>
             プロジェクトディレクトリ構造
+        </item>
+        <item>
+            ソースコード
+        </item>
+        <note>
+            ソースコードは常に完全なコードを生成して下さい。
         </note>
         <note>
-            ソースコード
+            ソースコード更新において一部分だけを生成するのは禁止です。
+        </note>
+        <note>
+            生成したソースコードは必ずパス・ファイル名を記載してください。
+        </note>
+        <note>
+            200行を越える大きなサイズのソースコードは、ファイルを分割してください。
         </note>
     </instruction>
     {% elif task_type == 'コードの生成' %}
     <instruction>
         ソースコードを必ず生成してください。
-        <description>
-        </description>
         <note>
             ソースコードは常に完全なコードを生成して下さい。
         </note>
