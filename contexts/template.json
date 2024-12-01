@@ -31,7 +31,32 @@
             }
         ],
         "user": [
-            
+            {
+                "text": "",
+                "sub_instructions": [
+                    {
+                        "type": "description",
+                        "texts": [
+                            "",
+                            ""
+                        ]
+                    },
+                    {
+                        "type": "note",
+                        "texts": [
+                            "",
+                            ""
+                        ]
+                    },
+                    {
+                        "type": "example",
+                        "texts": [
+                            "",
+                            ""
+                        ]
+                    }
+                ]
+            }
         ]
     }
 }
