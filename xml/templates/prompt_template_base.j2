@@ -5,6 +5,11 @@
         {{ role }}
     </role>
     {% endif %}
+    {% if not purpose == '' and purpose %}
+    <purpose>
+        {{ purpose }}
+    </purpose>
+    {% endif %}
     <section type="instructions">
         {% block system_prompt %}
         <instruction>
