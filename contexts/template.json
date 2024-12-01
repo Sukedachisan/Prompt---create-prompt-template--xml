@@ -22,6 +22,13 @@
                         ]
                     },
                     {
+                        "type": "item",
+                        "texts": [
+                            "",
+                            ""
+                        ]
+                    },
+                    {
                         "type": "example",
                         "texts": [
                             "",
@@ -44,6 +51,13 @@
                     },
                     {
                         "type": "note",
+                        "texts": [
+                            "",
+                            ""
+                        ]
+                    },
+                    {
+                        "type": "item",
                         "texts": [
                             "",
                             ""
