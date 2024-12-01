@@ -1,8 +1,10 @@
 {# system prompt #}
 <prompt type="system">
+    {% if not role == '' and role %}
     <role>
         {{ role }}
     </role>
+    {% endif %}
     <section type="instructions">
         {% block system_prompt %}
         <instruction>
