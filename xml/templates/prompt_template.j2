@@ -61,6 +61,12 @@
             {{ sub_instruction_text }}
         </note>
         {% endfor %}
+        {% elif sub_instruction.type == 'item' %}
+        {% for sub_instruction_text in sub_instruction.texts %}
+        <item>
+            {{ sub_instruction_text }}
+        </item>
+        {% endfor %}
         {% elif sub_instruction.type == 'example' %}
         {% for sub_instruction_text in sub_instruction.texts %}
         <example>
