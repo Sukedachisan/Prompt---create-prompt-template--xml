@@ -1,15 +1,14 @@
 {# system prompt #}
 <prompt type="system">
-{%- if not role == '' and role %}
 {%- filter indent %}
+{%- if not role == '' and role %}
 {% include 'includes/role.j2' %}
-{%- endfilter %}
 {%- endif %}
 {%- if not task_type == '' and task_type %}
-{%- filter indent %}
 {% include 'includes/purpose.j2' %}
-{%- endfilter %}
 {%- endif %}
+{% include 'includes/system_instructions.j2' %}
+{%- endfilter %}
 </prompt>
 
 {# user prompt #}
