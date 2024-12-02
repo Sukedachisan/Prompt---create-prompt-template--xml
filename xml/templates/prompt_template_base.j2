@@ -4,12 +4,12 @@
 {%- filter indent %}
 {% include 'includes/role.j2' %}
 {%- endfilter %}
-    {%- endif %}
-    {%- if not task_type == '' and task_type %}
-    <purpose>
-        {{ task_type }}
-    </purpose>
-    {%- endif %}
+{%- endif %}
+{%- if not task_type == '' and task_type %}
+{%- filter indent %}
+{% include 'includes/purpose.j2' %}
+{%- endfilter %}
+{%- endif %}
     <section type="instructions">
         {%- block system_instructions %}
         <instruction>
