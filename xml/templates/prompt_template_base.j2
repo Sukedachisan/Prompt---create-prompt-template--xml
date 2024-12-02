@@ -1,7 +1,7 @@
 {# system prompt #}
 <prompt type="system">
     {%- if not role == '' and role %}
-    {% filter indent %}
+    {% filter indent(4,False) %}
     {% include 'includes/role.j2' %}
     {% endfilter %}
     {%- endif %}
