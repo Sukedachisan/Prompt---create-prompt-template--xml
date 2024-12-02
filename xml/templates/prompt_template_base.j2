@@ -13,6 +13,7 @@
     <section type="instructions">
     {%- block system_instructions %}
     {%- filter indent %}
+    {% include 'includes/base_instruction.j2' %}
         <instruction>
             最低でも3回、推論を繰り返し、適切ではない部分があれば修正・変更を行い、最終的な回答をしてください。
         </instruction>
