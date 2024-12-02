@@ -1,10 +1,7 @@
-{% include "./includes/role.j2" %}
 {# system prompt #}
 <prompt type="system">
     {% if not role == '' and role -%}
-    <role>
-        {{ role }}
-    </role>
+    {% include "./includes/role.j2" %}
     {% endif -%}
     {% if not task_type == '' and task_type -%}
     <purpose>
