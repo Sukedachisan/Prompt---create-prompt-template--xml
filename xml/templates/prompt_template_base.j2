@@ -12,10 +12,10 @@
 {%- endif %}
     <section type="instructions">
     {%- filter indent %}
-    {%- block system_instructions %}
     {% include 'includes/base_instruction.j2' %}
-    {%- endblock %}
     {%- endfilter %}
+    {%- block system_instructions %}
+    {%- endblock %}
     </section>
 </prompt>
 
