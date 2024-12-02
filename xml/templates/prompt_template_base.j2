@@ -2,7 +2,7 @@
 <prompt type="system">
     {%- if not role == '' and role %}
     {%- filter indent(4,False) %}
-    {%- include 'includes/role.j2' %}
+    {% include 'includes/role.j2' %}
     {%- endfilter %}
     {%- endif %}
     {%- if not task_type == '' and task_type %}
