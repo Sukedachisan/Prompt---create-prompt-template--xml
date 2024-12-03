@@ -9,7 +9,7 @@
 {% include 'includes/instructions/system/product_development_and_generate_code.j2' %}
 {%- else %}
 {%- endif %}
-{%- if instructions.system %}
+{%- if instructions.system and not instructions.system == [] %}
 {%- for instruction in instructions.system %}
 {% include 'includes/instructions/custom_instruction.j2' %}
 {%- endfor %}
@@ -19,7 +19,7 @@
 
 {#- user instructions #}
 {%- block user_instructions %}
-{%- if instructions.user %}
+{%- if instructions.user and not instructions.user == [] %}
 {%- for instruction in instructions.user %}
 {% include 'includes/instructions/custom_instruction.j2' %}
 {%- endfor %}
