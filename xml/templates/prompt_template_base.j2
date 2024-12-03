@@ -10,9 +10,17 @@
 {%- if not task_type == '' and task_type %}
 {% include 'includes/purpose.j2' %}
 {%- endif %}
+<instruction>
+{%- filter indent %}
+<ul>
+{%- filter indent %}
 {%- block system_instructions %}
 {% include 'includes/instructions/system/common.j2' %}
 {%- endblock %}
+{%- endfilter %}
+<ul>
+{%- endfilter %}
+</instruction>
 {%- endfilter %}
 </section>
 
