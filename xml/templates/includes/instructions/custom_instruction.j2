@@ -1,33 +1,26 @@
 <li>
 {%- filter indent %}
 {{ instruction.text }}
-
 {%- if instruction.sub_instructions and not instruction.sub_instructions == [] %}
 {%- for sub_instruction in instruction.sub_instructions %}
-
-
-
 {%- if sub_instruction.type and sub_instruction.type == 'description' and sub_instruction.texts and not sub_instruction.texts == [] %}
 {%- for sub_instruction_text in sub_instruction.texts %}
 <description>
     {{ sub_instruction_text }}
 </description>
 {%- endfor %}
-
 {%- elif sub_instruction.type and sub_instruction.type == 'note' and sub_instruction.texts and not sub_instruction.texts == [] %}
 {%- for sub_instruction_text in sub_instruction.texts %}
 <note>
     {{ sub_instruction_text }}
 </note>
 {%- endfor %}
-
 {%- elif sub_instruction.type and sub_instruction.type == 'item' and sub_instruction.texts and not sub_instruction.texts == [] %}
 {%- for sub_instruction_text in sub_instruction.texts %}
 <item>
     {{ sub_instruction_text }}
 </item>
 {%- endfor %}
-    
 {%- elif sub_instruction.type and sub_instruction.type == 'example' and sub_instruction.texts and not sub_instruction.texts == [] %}
 {%- for sub_instruction_text in sub_instruction.texts %}
 <example>
@@ -35,12 +28,7 @@
 </example>
 {%- endfor %}
 {%- endif %}
-
-
-
-
 {%- endfor %}
 {%- endif %}
-
 {%- endfilter %}
 </li>
