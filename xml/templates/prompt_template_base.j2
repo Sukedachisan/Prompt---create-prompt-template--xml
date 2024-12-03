@@ -27,8 +27,16 @@
 {#- user prompt #}
 <section type='user_prompt'>
 {%- filter indent %}
+<instruction>
+{%- filter indent %}
+<ul>
+{%- filter indent %}
 {%- block user_instructions %}
 {%- endblock %}
+{%- endfilter %}
+<ul>
+{%- endfilter %}
+</instruction>
 {%- endfilter %}
 </section>
 
