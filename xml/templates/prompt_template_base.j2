@@ -1,5 +1,8 @@
-{# system prompt #}
-<prompt type='system'>
+<prompt>
+{%- filter indent %}
+
+{#- system prompt #}
+<section type='system_prompt'>
 {%- filter indent %}
 {%- if not role == '' and role %}
 {% include 'includes/role.j2' %}
@@ -7,16 +10,19 @@
 {%- if not task_type == '' and task_type %}
 {% include 'includes/purpose.j2' %}
 {%- endif %}
-{%- with section = 'system', type = 'instructions' %} 
-{% include 'includes/section.j2' %}
-{%- endwith %}
+{%- block system_instructions %}
+{% include 'includes/instructions/system/common.j2' %}
+{%- endblock %}
 {%- endfilter %}
-</prompt>
+</section>
 
-{# user prompt #}
-<prompt type='user'>
-    <section type='instructions'>
-        {%- block user_instructions %}
-        {%- endblock %}
-    </section>
+{#- user prompt #}
+<section type='user_prompt'>
+{%- filter indent %}
+{%- block user_instructions %}
+{%- endblock %}
+{%- endfilter %}
+</section>
+
+{%- endfilter %}
 </prompt>
