@@ -11,7 +11,9 @@
 {%- endif %}
 {%- if instructions.system and not instructions.system == [] %}
 {%- for instruction in instructions.system %}
+{%- if instruction.text and not instruction.text == '' %}
 {% include 'includes/instructions/custom_instruction.j2' %}
+{%- endif %}
 {%- endfor %}
 {%- endif %}
 {{- super() }}
@@ -21,7 +23,9 @@
 {%- block user_instructions %}
 {%- if instructions.user and not instructions.user == [] %}
 {%- for instruction in instructions.user %}
+{%- if instruction.text and not instruction.text == '' %}
 {% include 'includes/instructions/custom_instruction.j2' %}
+{%- endif %}
 {%- endfor %}
 {%- endif %}
 {{- super() }}
