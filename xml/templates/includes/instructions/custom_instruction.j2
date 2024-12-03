@@ -1,6 +1,5 @@
 <li>
 {%- filter indent %}
-{%- if instruction.text and not instruction.text == '' %}
 {{ instruction.text }}
 
 {%- if instruction.sub_instructions and not instruction.sub_instructions == [] %}
@@ -43,6 +42,5 @@
 {%- endfor %}
 {%- endif %}
 
-{%- endif %}
 {%- endfilter %}
 </li>
