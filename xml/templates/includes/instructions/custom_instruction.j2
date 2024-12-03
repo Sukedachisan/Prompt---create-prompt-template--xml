@@ -1,0 +1,32 @@
+<instruction>
+    {{ system_instruction.text }}
+    {%- if system_instruction.sub_instructions %}
+    {%- for sub_instruction in system_instruction.sub_instructions %}
+    {%- if sub_instruction.type == 'description' %}
+    {%- for sub_instruction_text in sub_instruction.texts %}
+    <description>
+        {{ sub_instruction_text }}
+    </description>
+    {%- endfor %}
+    {%- elif sub_instruction.type == 'note' %}
+    {%- for sub_instruction_text in sub_instruction.texts %}
+    <note>
+        {{ sub_instruction_text }}
+    </note>
+    {%- endfor %}
+    {%- elif sub_instruction.type == 'item' %}
+    {%- for sub_instruction_text in sub_instruction.texts %}
+    <item>
+        {{ sub_instruction_text }}
+    </item>
+    {%- endfor %}
+    {%- elif sub_instruction.type == 'example' %}
+    {%- for sub_instruction_text in sub_instruction.texts %}
+    <example>
+        {{ sub_instruction_text }}
+    </example>
+    {%- endfor %}
+    {%- endif %}
+    {%- endfor %}
+    {%- endif %}
+</instruction>
