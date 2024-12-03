@@ -7,7 +7,7 @@
 {%- if not task_type == '' and task_type %}
 {% include 'includes/purpose.j2' %}
 {%- endif %}
-{%- with section = 'system' %} 
+{%- with section = 'system', type = 'instructions' %} 
 {% include 'includes/section.j2' %}
 {%- endwith %}
 {%- endfilter %}
