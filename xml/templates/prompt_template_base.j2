@@ -12,13 +12,9 @@
 {%- endif %}
 <instructions>
 {%- filter indent %}
-<ul>
-{%- filter indent %}
 {%- block system_instructions %}
 {% include 'includes/instructions/system/common.j2' %}
 {%- endblock %}
-{%- endfilter %}
-<ul>
 {%- endfilter %}
 </instructions>
 {%- endfilter %}
@@ -29,12 +25,8 @@
 {%- filter indent %}
 <instructions>
 {%- filter indent %}
-<ul>
-{%- filter indent %}
 {%- block user_instructions %}
 {%- endblock %}
-{%- endfilter %}
-<ul>
 {%- endfilter %}
 </instructions>
 {%- endfilter %}
