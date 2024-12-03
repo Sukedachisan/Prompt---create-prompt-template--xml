@@ -13,7 +13,7 @@
 {%- for system_instruction in instructions.system %}
 {%- endfor %}
 {%- endif %}
-{{ super() }}
+{{- super() }}
 {%- endblock %}
 
 {#- user instructions #}
@@ -22,5 +22,5 @@
 {%- for user_instruction in instructions.user %}
 {%- endfor %}
 {%- endif %}
-{{ super() }}
+{{- super() }}
 {%- endblock %}
