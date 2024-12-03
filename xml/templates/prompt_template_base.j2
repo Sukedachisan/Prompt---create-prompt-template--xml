@@ -10,7 +10,7 @@
 {%- if not task_type == '' and task_type %}
 {% include 'includes/purpose.j2' %}
 {%- endif %}
-<instruction>
+<instructions>
 {%- filter indent %}
 <ul>
 {%- filter indent %}
@@ -20,14 +20,14 @@
 {%- endfilter %}
 <ul>
 {%- endfilter %}
-</instruction>
+</instructions>
 {%- endfilter %}
 </section>
 
 {#- user prompt #}
 <section type='user_prompt'>
 {%- filter indent %}
-<instruction>
+<instructions>
 {%- filter indent %}
 <ul>
 {%- filter indent %}
@@ -36,7 +36,7 @@
 {%- endfilter %}
 <ul>
 {%- endfilter %}
-</instruction>
+</instructions>
 {%- endfilter %}
 </section>
 
