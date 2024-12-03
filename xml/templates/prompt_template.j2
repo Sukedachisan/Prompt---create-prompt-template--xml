@@ -10,7 +10,7 @@
 {%- else %}
 {%- endif %}
 {%- if instructions.system %}
-{%- for system_instruction in instructions.system %}
+{%- for instruction in instructions.system %}
 {% include 'includes/instructions/custom_instruction.j2' %}
 {%- endfor %}
 {%- endif %}
@@ -20,7 +20,8 @@
 {#- user instructions #}
 {%- block user_instructions %}
 {%- if instructions.user %}
-{%- for user_instruction in instructions.user %}
+{%- for instruction in instructions.user %}
+{% include 'includes/instructions/custom_instruction.j2' %}
 {%- endfor %}
 {%- endif %}
 {{- super() }}
