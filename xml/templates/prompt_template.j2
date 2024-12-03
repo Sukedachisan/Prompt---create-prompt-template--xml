@@ -1,81 +1,26 @@
-{% extends 'prompt_template_base.j2' %}
+{%- extends 'prompt_template_base.j2' %}
+
+{#- system instructions #}
 {%- block system_instructions %}
-    {%- if task_type == '製品・サービスの開発' or task_type == 'コードの生成' %}
-    {%- if task_type == '製品・サービスの開発' %}
-    <instruction>
-        次の項目に記載したものは必ず生成してください。
-        <item>
-            要件定義書
-        </item>
-        <item>
-            モデル定義
-        </item>
-        <item>
-            モデル間の関係図
-        </item>
-        <item>
-            システムフロー図
-        </item>
-        <item>
-            プロジェクトディレクトリ構造
-        </item>
-    </instruction>
-    {%- endif %}
-    <instruction>
-        ソースコードを必ず生成してください。
-        <note>
-            ソースコードは常に完全なコードを生成して下さい。
-        </note>
-        <note>
-            ソースコード更新において一部分だけを生成するのは禁止です。
-        </note>
-        <note>
-            生成したソースコードは必ずパス・ファイル名を記載してください。
-        </note>
-        <note>
-            200行を越える大きなサイズのソースコードは、ファイルを分割してください。
-        </note>
-    </instruction>
-    {%- else %}
-    {%- endif %}
-    {%- if instructions.system %}
-    {%- for system_instruction in instructions.system %}
-    <instruction>
-        {{ system_instruction.text }}
-        {%- if system_instruction.sub_instructions %}
-        {%- for sub_instruction in system_instruction.sub_instructions %}
-        {%- if sub_instruction.type == 'description' %}
-        {%- for sub_instruction_text in sub_instruction.texts %}
-        <description>
-            {{ sub_instruction_text }}
-        </description>
-        {%- endfor %}
-        {%- elif sub_instruction.type == 'note' %}
-        {%- for sub_instruction_text in sub_instruction.texts %}
-        <note>
-            {{ sub_instruction_text }}
-        </note>
-        {%- endfor %}
-        {%- elif sub_instruction.type == 'item' %}
-        {%- for sub_instruction_text in sub_instruction.texts %}
-        <item>
-            {{ sub_instruction_text }}
-        </item>
-        {%- endfor %}
-        {%- elif sub_instruction.type == 'example' %}
-        {%- for sub_instruction_text in sub_instruction.texts %}
-        <example>
-            {{ sub_instruction_text }}
-        </example>
-        {%- endfor %}
-        {%- endif %}
-        {%- endfor %}
-        {%- endif %}
-    </instruction>
-    {%- endfor %}
-    {%- endif %}
-    {{ super() }}
+{%- if task_type == '製品・サービスの開発' or task_type == 'コードの生成' %}
+{%- if task_type == '製品・サービスの開発' %}
+{% include 'includes/instructions/system/product_development.j2' %}
+{%- endif %}
+{% include 'includes/instructions/system/product_development_and_generate_code.j2' %}
+{%- else %}
+{%- endif %}
+{%- if instructions.system %}
+{%- for system_instruction in instructions.system %}
+{%- endfor %}
+{%- endif %}
+{{ super() }}
 {%- endblock %}
 
+{#- user instructions #}
 {%- block user_instructions %}
+{%- if instructions.user %}
+{%- for user_instruction in instructions.user %}
+{%- endfor %}
+{%- endif %}
+{{ super() }}
 {%- endblock %}
