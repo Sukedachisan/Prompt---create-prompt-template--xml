@@ -11,6 +11,9 @@
 {%- endif %}
 {%- if instructions.system %}
 {%- for system_instruction in instructions.system %}
+
+{% include 'includes/instructions/custom_instruction.j2' %}
+
 {%- endfor %}
 {%- endif %}
 {{- super() }}
