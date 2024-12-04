@@ -1,5 +1,5 @@
 {
-    "template_name": "template",
+    "name": "プロンプト",
     "task_type": "コードの生成",
     "role": "要件定義から高度で複雑な設計及び実装まで一貫して開発できる フルスタックエンジニア です。",
     "instructions": {
