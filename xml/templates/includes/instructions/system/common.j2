@@ -19,3 +19,8 @@
 <li>
     概要書 は回答の都度、更新してください。
 </li>
+{%- if not overview == '' and overview %}
+<li>
+    <overview> はこれまでの会話のやり取りの記録の概要です。 <overview> に基づき、回答をしてください。
+</li>
+{%- endif %}
