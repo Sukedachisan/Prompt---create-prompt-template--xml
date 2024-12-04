@@ -17,6 +17,9 @@
 {%- endblock %}
 {%- endfilter %}
 </instructions>
+{%- if not overview == '' and overview %}
+{% include 'includes/overview.j2' %}
+{%- endif %}
 {%- endfilter %}
 </section>
 
