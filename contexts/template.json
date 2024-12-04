@@ -5,7 +5,7 @@
     "languages": ["python3.13", ""],
     "libraries": ["", ""],
     "requirements": ["", ""],
-    "rules: ["", ""],
+    "rules": ["", ""],
     "instructions": {
         "system": [
             {
