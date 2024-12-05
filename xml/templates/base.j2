@@ -1,4 +1,21 @@
 System:
+{%- if task_type and not task_type == '' %}
+{% include 'includes/purpose.j2' %}
+{%- endif %}
+# ユーザーの入力に対し、
+{%- if role and not role == '' %}
+{% include 'includes/role.j2' %}
+{%- endif %}
+{%- if options and not options == [] %}
+{% include 'includes/options.j2' %}
+{%- endif %}
+<instructions>
+{%- filter indent %}
+{%- block system_instructions %}
+{% include 'includes/instructions/system/common.j2' %}
+{%- endblock %}
+{%- endfilter %}
+</instructions>
 
 User:
 
