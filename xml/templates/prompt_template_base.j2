@@ -26,6 +26,9 @@
 {#- user prompt #}
 <section type='user_prompt'>
 {%- filter indent %}
+{%- if not options == '' and options %}
+{% include 'includes/options.j2' %}
+{%- endif %}
 <instructions>
 {%- filter indent %}
 {%- block user_instructions %}
