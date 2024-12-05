@@ -1,11 +1,12 @@
 System:
-{%- if task_type and not task_type == '' %}
+{%- if purpose and not purpose == '' %}
 {% include 'includes/purpose.j2' %}
 {%- endif %}
-# ユーザーの入力に対し、
+# {{ purpose }} （ユーザーの入力文から以下の情報を抽出し、 json形式で出力してください。）
 {%- if role and not role == '' %}
 {% include 'includes/role.j2' %}
 {%- endif %}
+# {{ role }} として回答を行ってください。
 {%- if options and not options == [] %}
 {% include 'includes/options.j2' %}
 {%- endif %}
