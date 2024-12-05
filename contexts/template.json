@@ -3,6 +3,31 @@
     "task_type": "コードの生成",
     "role": "要件定義から高度で複雑な設計及び実装まで一貫して開発できる フルスタックエンジニア です。",
     "overview": "user: 日本で一番高い山を教えてください。 assistant: 冨士山です。",
+    "options": [
+        {
+            "type": "languages",
+            "texts": [
+                "python3.13"
+            ]
+        },
+        {
+            "type": "libraries",
+            "texts": [
+                "jinja2"
+            ]
+        },
+        {
+            "type": "requirements",
+            "texts": [
+                "顧客名、メールアドレスを持ったJSONからメール文面を生成するコードを生成してください。"
+            ]
+        },
+        {
+            "type": "rules",
+            "texts": [
+            ]
+        }
+    ],
     "instructions": {
         "system": [
             {
@@ -74,21 +99,5 @@
                 ]
             }
         ]
-    },
-    "languages": [
-        "python3.13",
-        ""
-    ],
-    "libraries": [
-        "",
-        ""
-    ],
-    "requirements": [
-        "",
-        ""
-    ],
-    "rules": [
-        "",
-        ""
-    ]
+    }
 }
