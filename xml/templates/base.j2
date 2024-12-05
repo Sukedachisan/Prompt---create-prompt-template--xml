@@ -6,10 +6,11 @@ System:
 {%- if role and not role == '' %}
 {% include 'includes/role.j2' %}
 {%- endif %}
-# {{ role }} として回答を行います。
+# {{ role }} （ユーザーの入力文に対して {{ role }} として応答を行います。）
 {%- if options and not options == [] %}
 {% include 'includes/options.j2' %}
 {%- endif %}
+# \<format></format>
 <instructions>
 {%- filter indent %}
 {%- block system_instructions %}
