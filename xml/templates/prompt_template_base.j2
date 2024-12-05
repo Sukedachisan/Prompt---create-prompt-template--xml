@@ -4,10 +4,10 @@
 {#- system prompt #}
 <section type='system_prompt'>
 {%- filter indent %}
-{%- if not role == '' and role %}
+{%- if role and not role == '' %}
 {% include 'includes/role.j2' %}
 {%- endif %}
-{%- if not task_type == '' and task_type %}
+{%- if task_type and not task_type == '' %}
 {% include 'includes/purpose.j2' %}
 {%- endif %}
 <instructions>
@@ -17,7 +17,7 @@
 {%- endblock %}
 {%- endfilter %}
 </instructions>
-{%- if not overview == '' and overview %}
+{%- if overview and not overview == '' %}
 {% include 'includes/overview.j2' %}
 {%- endif %}
 {%- endfilter %}
@@ -26,15 +26,15 @@
 {#- user prompt #}
 <section type='user_prompt'>
 {%- filter indent %}
-{%- if not options == '' and options %}
-{% include 'includes/options.j2' %}
-{%- endif %}
 <instructions>
 {%- filter indent %}
 {%- block user_instructions %}
 {%- endblock %}
 {%- endfilter %}
 </instructions>
+{%- if options and not options == [] %}
+{% include 'includes/options.j2' %}
+{%- endif %}
 {%- endfilter %}
 </section>
 
