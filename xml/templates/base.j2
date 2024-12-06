@@ -1,7 +1,9 @@
 System:
-{%- if purpose and not purpose == '' %}
-{% include 'includes/purpose.j2' %} # Userのリクエストから情報を抽出し、json形式のデータに変換してください。
-{%- endif %}
+
+{%- block system_instructions %}
+{% include 'includes/instructions/system/common.j2' %}
+# Userのリクエストから情報を抽出し、json形式のデータに変換してください。
+{%- endblock %}
 
 {%- if role and not role == '' %}
 {% include 'includes/role.j2' %} # 回答は {{ role }} として生成してください。
@@ -14,10 +16,6 @@ System:
 {%- if log and not log == [] %}
 {% include 'includes/log.j2' %}
 {%- endif %}
-
-{%- block system_instructions %}
-{% include 'includes/instructions/system/common.j2' %}
-{%- endblock %}
 
 {%- if purpose and not purpose == '' %}
 {% include 'includes/purpose.j2' %} # Userのリクエストに基づいて、json形式のデータを提供してください。
