@@ -2,7 +2,7 @@
     "name": "プロンプト",
     "task_type": "コードの生成",
     "role": "要件定義から高度で複雑な設計及び実装まで一貫して開発できる フルスタックエンジニア です。",
-    "history": "user: 日本で一番高い山を教えてください。 assistant: 冨士山です。",
+    "log": ["user: 日本で一番高い山を教えてください。", "assistant: 冨士山です。"],
     "options": [
         {
             "type": "languages",
