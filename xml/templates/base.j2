@@ -1,10 +1,12 @@
 System:
 {%- block system_instructions %}
 {% include 'includes/instructions/system/common.j2' %}
-# Userのリクエストから情報を抽出し、json形式のデータに変換してください。
+Userのリクエストから情報を抽出し、json形式のデータに変換してください。
 {%- endblock %}
+
 {%- if role and not role == '' %}
-{% include 'includes/role.j2' %} # 回答は {{ role }} として生成してください。
+{% include 'includes/role.j2' %}
+回答は {{ role }} として生成してください。
 {%- endif %}
 
 {%- if options and not options == [] %}
@@ -16,11 +18,13 @@ System:
 {%- endif %}
 
 {%- if thinking and not thinking == '' %}
-{% include 'includes/thinking.j2' %} # 回答を行う前に<thinking>タグ内で考えてください。 
+{% include 'includes/thinking.j2' %}
+回答を行う前に<thinking>タグ内で考えてください。 
 {%- endif %}
 
 {%- if purpose and not purpose == '' %}
-{% include 'includes/purpose.j2' %} # Userのリクエストに基づいて、json形式のデータを提供してください。
+{% include 'includes/purpose.j2' %}
+Userのリクエストに基づいて、json形式のデータを提供してください。
 {%- endif %}
 
 User:
