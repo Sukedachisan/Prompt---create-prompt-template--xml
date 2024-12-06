@@ -2,21 +2,27 @@ System:
 {%- if purpose and not purpose == '' %}
 {% include 'includes/purpose.j2' %} # Userのリクエストから情報を抽出し、json形式のデータに変換してください。
 {%- endif %}
+
 {%- if role and not role == '' %}
-{% include 'includes/role.j2' %} # {{ role }} として回答を生成してください。
+{% include 'includes/role.j2' %} # 回答は {{ role }} として生成してください。
 {%- endif %}
+
 {%- if options and not options == [] %}
 {% include 'includes/options.j2' %}
 {%- endif %}
+
 {%- if log and not log == [] %}
 {% include 'includes/log.j2' %}
 {%- endif %}
-{%- if think and not think == [] %}
-{% include 'includes/think.j2' %}
+
+{%- if thinking and not thinking == '' %}
+{% include 'includes/thinking.j2' %} # 回答を行う前に<thinking>タグ内で考えてください。 
 {%- endif %}
+
 {%- block system_instructions %}
 {% include 'includes/instructions/system/common.j2' %}
 {%- endblock %}
+
 {%- if purpose and not purpose == '' %}
 {% include 'includes/purpose.j2' %} # Userのリクエストに基づいて、json形式のデータを提供してください。
 {%- endif %}
