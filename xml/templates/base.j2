@@ -8,8 +8,8 @@ System:
 {%- if options and not options == [] %}
 {% include 'includes/options.j2' %}
 {%- endif %}
-{%- if history and not history == '' %}
-{% include 'includes/history.j2' %}
+{%- if log and not log == '' %}
+{% include 'includes/log.j2' %}
 {%- endif %}
 {%- block system_instructions %}
 {% include 'includes/instructions/system/common.j2' %}
