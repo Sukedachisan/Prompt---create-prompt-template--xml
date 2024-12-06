@@ -1,9 +1,9 @@
 System:
 {%- if purpose and not purpose == '' %}
-{{ purpose }} # ユーザーの入力文から情報を抽出し、 json形式で出力してください。
+{% include 'includes/purpose.j2' %} # ユーザーの入力文から情報を抽出し、 json形式で出力してください。
 {%- endif %}
 {%- if role and not role == '' %}
-{{ role }} # {{ role }} として応答してください。
+{% include 'includes/role.j2' %} # {{ role }} として応答してください。
 {%- endif %}
 {%- if options and not options == [] %}
 {% include 'includes/options.j2' %}
