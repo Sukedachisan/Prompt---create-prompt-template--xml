@@ -5,16 +5,18 @@ System:
 {%- if role and not role == '' %}
 {% include 'includes/role.j2' %} # {{ role }} として応答してください。
 {%- endif %}
+{%- if log and not log == [] %}
+{% include 'includes/log.j2' %}
+{%- endif %}
 {%- if options and not options == [] %}
 {% include 'includes/options.j2' %}
 {%- endif %}
-{%- if log and not log == '' %}
-{% include 'includes/log.j2' %}
+{%- if think and not think == [] %}
+{% include 'includes/think.j2' %}
 {%- endif %}
 {%- block system_instructions %}
 {% include 'includes/instructions/system/common.j2' %}
 {%- endblock %}
-input log think instruction
 
 User:
 
