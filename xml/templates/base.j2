@@ -2,11 +2,11 @@ System:
 {%- if purpose and not purpose == '' %}
 {% include 'includes/purpose.j2' %}
 {%- endif %}
-# {{ purpose }} （ユーザーの入力文から情報を抽出し、 json形式で出力します。）
+# {{ purpose }} （ユーザーの入力文から情報を抽出し、 json形式で出力してください。）
 {%- if role and not role == '' %}
 {% include 'includes/role.j2' %}
 {%- endif %}
-# {{ role }} （ユーザーの入力文に対して {{ role }} として応答を行います。）
+# {{ role }} （{{ role }} として応答してください。）
 {%- if options and not options == [] %}
 {% include 'includes/options.j2' %}
 {%- endif %}
