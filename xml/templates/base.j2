@@ -15,16 +15,16 @@ System:
 {% include 'includes/log.j2' %}
 {%- endif %}
 
-{%- if thinking and not thinking == '' %}
-{% include 'includes/thinking.j2' %} # 回答を行う前に<thinking>タグ内で考えてください。 
-{%- endif %}
-
 {%- block system_instructions %}
 {% include 'includes/instructions/system/common.j2' %}
 {%- endblock %}
 
 {%- if purpose and not purpose == '' %}
 {% include 'includes/purpose.j2' %} # Userのリクエストに基づいて、json形式のデータを提供してください。
+{%- endif %}
+
+{%- if thinking and not thinking == '' %}
+{% include 'includes/thinking.j2' %} # 回答を行う前に<thinking>タグ内で考えてください。 
 {%- endif %}
 
 User:
